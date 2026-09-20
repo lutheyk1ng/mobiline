@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agenda · MobiLine</title>
+<link rel="icon" href="assets/logo-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/vendor/bootstrap-icons/bootstrap-icons.min.css">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .calendar-wrap { display:grid; grid-template-columns: 2.2fr 1fr; gap:18px; }
+  .cal-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; }
+  .cal-nav { display:flex; align-items:center; gap:8px; }
+  .cal-nav button { width:34px; height:34px; border-radius:8px; border:1px solid var(--border-color); background:#fff; cursor:pointer; }
+  .cal-title { font-family:var(--font-heading); font-weight:700; font-size:16px; min-width:150px; text-align:center; }
+  .cal-grid { display:grid; grid-template-columns: repeat(7, 1fr); gap:6px; }
+  .cal-dow { text-align:center; font-size:11px; font-weight:700; color:var(--text-muted); padding:6px 0; text-transform:uppercase; }
+  .cal-day { min-height:84px; border:1px solid var(--border-color-soft); border-radius:10px; padding:8px; cursor:pointer; background:#fff; transition:background .12s ease; }
+  .cal-day:hover { background: var(--bg-surface-alt); }
+  .cal-day.other-month { opacity:0.35; }
+  .cal-day.today { border-color: var(--brand-caramel); box-shadow: 0 0 0 1px var(--brand-caramel) inset; }
+  .cal-day .day-num { font-size:12.5px; font-weight:700; margin-bottom:6px; }
+  .cal-day .day-dots { display:flex; flex-wrap:wrap; gap:3px; }
+  .cal-day .day-dots span { width:6px; height:6px; border-radius:50%; }
+  @media (max-width:992px){ .calendar-wrap { grid-template-columns:1fr; } .cal-day{ min-height:60px; } }
+</style>
+</head>
+<body data-page="agenda">
+
+<div class="app-shell">
+  <aside class="sidebar" id="sidebarMount"></aside>
+  <div class="main-area">
+    <header class="topbar" id="topbarMount"></header>
+
+    <main class="content">
+      <div class="content-header">
+        <div>
+          <h1>Agenda</h1>
+          <p>Entregas, instalações, medições, reuniões e visitas.</p>
+        </div>
+        <button class="btn btn-primary" id="btnNovoEvento"><i class="bi bi-plus-lg"></i> Novo evento</button>
+      </div>
+
+      <div class="calendar-wrap">
+        <div class="card card-pad">
+          <div class="cal-header">
+            <div class="cal-title" id="calTitle"></div>
+            <div class="cal-nav">
+              <button id="calPrev"><i class="bi bi-chevron-left"></i></button>
+              <button id="calToday" class="btn btn-outline btn-sm">Hoje</button>
+              <button id="calNext"><i class="bi bi-chevron-right"></i></button>
+            </div>
+          </div>
+          <div class="cal-grid" id="calDow"></div>
+          <div class="cal-grid" id="calGrid" style="margin-top:6px;"></div>
+        </div>
+
+        <div class="card">
+          <div class="card-header"><h3 id="agendaListTitle">Eventos do dia</h3></div>
+          <div id="agendaList" style="padding: 6px 0;"></div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modalEvento">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3 id="modalEventoTitle">Novo evento</h3>
+      <button class="modal-close" data-close><i class="bi bi-x-lg"></i></button>
+    </div>
+    <form id="formEvento">
+      <div class="modal-body">
+        <div class="form-grid">
+          <div class="form-field full"><label>Título *</label><input type="text" id="fTitulo" required></div>
+          <div class="form-field"><label>Cliente</label><select id="fCliente"><option value="">— Nenhum —</option></select></div>
+          <div class="form-field"><label>Projeto</label><select id="fProjeto"><option value="">— Nenhum —</option></select></div>
+          <div class="form-field"><label>Data *</label><input type="date" id="fData" required></div>
+          <div class="form-field"><label>Horário *</label><input type="time" id="fHorario" required></div>
+          <div class="form-field full"><label>Tipo</label>
+            <select id="fTipo"><option>Entrega</option><option>Instalação</option><option>Medição</option><option>Reunião</option><option>Visita</option></select>
+          </div>
+          <div class="form-field full"><label>Observação</label><textarea id="fObservacao"></textarea></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline" data-close>Cancelar</button>
+        <button type="submit" class="btn btn-primary"><i class="bi bi-check-lg"></i> Salvar evento</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="js/utils.js"></script>
+<script src="js/data.js"></script>
+<script src="js/layout.js"></script>
+<script src="js/agenda.js"></script>
+</body>
+</html>

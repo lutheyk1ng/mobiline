@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pagamentos · MobiLine</title>
+<link rel="icon" href="assets/logo-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/vendor/bootstrap-icons/bootstrap-icons.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="pagamentos">
+
+<div class="app-shell">
+  <aside class="sidebar" id="sidebarMount"></aside>
+  <div class="main-area">
+    <header class="topbar" id="topbarMount"></header>
+
+    <main class="content">
+      <div class="content-header">
+        <div>
+          <h1>Pagamentos</h1>
+          <p>Controle os recebimentos de cada projeto.</p>
+        </div>
+        <button class="btn btn-primary" id="btnNovoPagamento"><i class="bi bi-plus-lg"></i> Novo pagamento</button>
+      </div>
+
+      <div id="alertHolder"></div>
+
+      <div class="card">
+        <div class="card-pad" style="padding-bottom:0;">
+          <div class="toolbar">
+            <div class="search-box"><i class="bi bi-search"></i><input type="text" id="searchInput" placeholder="Pesquisar por projeto ou cliente..."></div>
+            <select class="filter-select" id="situacaoFilter">
+              <option value="">Todas as situações</option>
+              <option value="Pago">Pago</option>
+              <option value="Pendente">Pendente</option>
+              <option value="Expirado">Expirado</option>
+            </select>
+            <span class="cell-muted" id="countLabel" style="margin-left:auto;"></span>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table class="mobi-table">
+            <thead>
+              <tr><th>Projeto</th><th>Cliente</th><th>Total</th><th>Pago</th><th>Restante</th><th>Vencimento</th><th>Situação</th><th></th></tr>
+            </thead>
+            <tbody id="pagamentosBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modalPagamento">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3 id="modalPagamentoTitle">Novo pagamento</h3>
+      <button class="modal-close" data-close><i class="bi bi-x-lg"></i></button>
+    </div>
+    <form id="formPagamento">
+      <div class="modal-body">
+        <div class="form-grid">
+          <div class="form-field full"><label>Projeto *</label><select id="fProjeto" required></select></div>
+          <div class="form-field"><label>Valor total (R$) *</label><input type="number" min="0" step="0.01" id="fValorTotal" required></div>
+          <div class="form-field"><label>Valor pago (R$)</label><input type="number" min="0" step="0.01" id="fValorPago" value="0"></div>
+          <div class="form-field"><label>Forma de pagamento</label>
+            <select id="fForma">
+              <option>PIX</option><option>Cartão de crédito</option><option>Boleto</option><option>Dinheiro</option>
+            </select>
+          </div>
+          <div class="form-field"><label>Número de parcelas</label><input type="number" min="1" step="1" id="fParcelas" value="1"></div>
+          <div class="form-field"><label>Data de vencimento *</label><input type="date" id="fVencimento" required></div>
+          <div class="form-field"><label>Situação</label>
+            <select id="fSituacao"><option>Pendente</option><option>Pago</option><option>Expirado</option></select>
+          </div>
+        </div>
+        <p class="form-hint" style="margin-top:10px;">O valor restante é calculado automaticamente (valor total − valor pago).</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline" data-close>Cancelar</button>
+        <button type="submit" class="btn btn-primary"><i class="bi bi-check-lg"></i> Salvar pagamento</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="js/utils.js"></script>
+<script src="js/data.js"></script>
+<script src="js/layout.js"></script>
+<script src="js/pagamentos.js"></script>
+</body>
+</html>

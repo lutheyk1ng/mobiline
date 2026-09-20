@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projetos · MobiLine</title>
+<link rel="icon" href="assets/logo-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/vendor/bootstrap-icons/bootstrap-icons.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="projetos">
+
+<div class="app-shell">
+  <aside class="sidebar" id="sidebarMount"></aside>
+  <div class="main-area">
+    <header class="topbar" id="topbarMount"></header>
+
+    <main class="content">
+      <div class="content-header">
+        <div>
+          <h1>Projetos</h1>
+          <p>Acompanhe prazos, status e valores de cada projeto.</p>
+        </div>
+        <button class="btn btn-primary" id="btnNovoProjeto"><i class="bi bi-plus-lg"></i> Novo projeto</button>
+      </div>
+
+      <div class="card">
+        <div class="card-pad" style="padding-bottom:0;">
+          <div class="toolbar">
+            <div class="search-box"><i class="bi bi-search"></i><input type="text" id="searchInput" placeholder="Pesquisar por projeto ou cliente..."></div>
+            <select class="filter-select" id="statusFilter">
+              <option value="">Todos os status</option>
+              <option value="Em andamento">Em andamento</option>
+              <option value="Reservado">Reservado</option>
+              <option value="Concluído">Concluído</option>
+              <option value="Atrasado">Atrasado</option>
+            </select>
+            <span class="cell-muted" id="countLabel" style="margin-left:auto;"></span>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table class="mobi-table">
+            <thead>
+              <tr><th>Projeto</th><th>Cliente</th><th>Responsável</th><th>Status</th><th>Prazo</th><th>Valor</th><th></th></tr>
+            </thead>
+            <tbody id="projetosBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modalProjeto">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3 id="modalProjetoTitle">Novo projeto</h3>
+      <button class="modal-close" data-close><i class="bi bi-x-lg"></i></button>
+    </div>
+    <form id="formProjeto">
+      <div class="modal-body">
+        <div class="form-grid">
+          <div class="form-field full"><label>Nome do projeto *</label><input type="text" id="fNome" required></div>
+          <div class="form-field full"><label>Cliente *</label><select id="fCliente" required></select></div>
+          <div class="form-field"><label>Data de criação</label><input type="date" id="fDataCriacao"></div>
+          <div class="form-field"><label>Data prevista de entrega *</label><input type="date" id="fDataEntrega" required></div>
+          <div class="form-field"><label>Valor total (R$) *</label><input type="number" min="0" step="0.01" id="fValor" required></div>
+          <div class="form-field"><label>Status</label>
+            <select id="fStatus">
+              <option>Em andamento</option>
+              <option>Reservado</option>
+              <option>Concluído</option>
+              <option>Atrasado</option>
+            </select>
+          </div>
+          <div class="form-field full"><label>Responsável</label><input type="text" id="fResponsavel" placeholder="Ex: Equipe de Produção A"></div>
+          <div class="form-field full"><label>Observações</label><textarea id="fObservacoes"></textarea></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline" data-close>Cancelar</button>
+        <button type="submit" class="btn btn-primary"><i class="bi bi-check-lg"></i> Salvar projeto</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="js/utils.js"></script>
+<script src="js/data.js"></script>
+<script src="js/layout.js"></script>
+<script src="js/projetos.js"></script>
+</body>
+</html>

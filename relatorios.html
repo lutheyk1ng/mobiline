@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Relatórios · MobiLine</title>
+<link rel="icon" href="assets/logo-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/vendor/bootstrap-icons/bootstrap-icons.min.css">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .report-tabs { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:18px; }
+  .report-tab { padding:9px 16px; border-radius:30px; border:1px solid var(--border-color); background:#fff; font-size:13px; font-weight:600; cursor:pointer; color:var(--text-secondary); }
+  .report-tab.active { background: var(--brand-brown); color:#fff; border-color: var(--brand-brown); }
+  @media print {
+    .sidebar, .topbar, .report-tabs, .no-print { display:none !important; }
+    .content { padding:0 !important; }
+    body { background:#fff; }
+  }
+</style>
+</head>
+<body data-page="relatorios">
+
+<div class="app-shell">
+  <aside class="sidebar" id="sidebarMount"></aside>
+  <div class="main-area">
+    <header class="topbar" id="topbarMount"></header>
+
+    <main class="content">
+      <div class="content-header">
+        <div>
+          <h1>Relatórios</h1>
+          <p>Exporte e imprima relatórios detalhados da sua movelaria.</p>
+        </div>
+        <div class="no-print" style="display:flex; gap:8px;">
+          <button class="btn btn-outline" id="btnExportar"><i class="bi bi-download"></i> Exportar CSV</button>
+          <button class="btn btn-primary" id="btnImprimir"><i class="bi bi-printer"></i> Imprimir</button>
+        </div>
+      </div>
+
+      <div class="report-tabs no-print">
+        <button class="report-tab active" data-tab="clientes">Clientes</button>
+        <button class="report-tab" data-tab="projetos">Projetos</button>
+        <button class="report-tab" data-tab="financeiro">Financeiro</button>
+        <button class="report-tab" data-tab="pagamentos">Pagamentos</button>
+        <button class="report-tab" data-tab="estoque">Estoque</button>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><h3 id="reportTitle">Relatório de clientes</h3></div>
+        <div class="table-wrap"><table class="mobi-table" id="reportTable"><thead></thead><tbody></tbody></table></div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="js/utils.js"></script>
+<script src="js/data.js"></script>
+<script src="js/layout.js"></script>
+<script src="js/relatorios.js"></script>
+</body>
+</html>

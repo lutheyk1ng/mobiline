@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Entrar · MobiLine</title>
+<link rel="icon" href="assets/logo-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/vendor/bootstrap-icons/bootstrap-icons.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="login-page">
+  <div class="login-visual">
+    <div class="login-visual-content">
+      <div class="eyebrow">SISTEMA DE GESTÃO PARA MOVELARIAS</div>
+      <h2>Organize cada projeto, cliente e entrega em um só lugar.</h2>
+      <p>O MobiLine reúne clientes, projetos, pagamentos, agenda e estoque da sua movelaria em um painel simples de usar — para você tomar decisões com clareza todos os dias.</p>
+    </div>
+    <div class="login-stats">
+      <div class="stat"><b>27</b><span>Clientes ativos</span></div>
+      <div class="stat"><b>9</b><span>Projetos em produção</span></div>
+      <div class="stat"><b>R$ 24,8 mil</b><span>Receita no mês</span></div>
+    </div>
+  </div>
+
+  <div class="login-form-side">
+    <div class="login-form-box">
+      <div class="login-logo">
+        <img src="assets/logo-icon.png" alt="MobiLine">
+        <span class="brand-name">MobiLine</span>
+      </div>
+      <h1>Bem-vindo de volta</h1>
+      <p class="subtitle">Entre com sua conta para acessar o painel da sua movelaria.</p>
+
+      <div class="login-error" id="loginError"><i class="bi bi-exclamation-circle-fill"></i><span>E-mail ou senha inválidos.</span></div>
+
+      <form id="loginForm">
+        <div class="form-field" style="margin-bottom:14px;">
+          <label for="loginEmail">E-mail</label>
+          <input type="email" id="loginEmail" placeholder="seuemail@mobiline.com" required>
+        </div>
+        <div class="form-field">
+          <label for="loginSenha">Senha</label>
+          <div class="password-field">
+            <input type="password" id="loginSenha" placeholder="••••••••" required>
+            <button type="button" class="toggle-pass" id="togglePass"><i class="bi bi-eye"></i></button>
+          </div>
+        </div>
+
+        <div class="login-row-between">
+          <label class="checkbox-line"><input type="checkbox" id="rememberMe" checked> Lembrar-me</label>
+          <a href="#" class="forgot-link" id="forgotLink">Esqueci minha senha</a>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block"><i class="bi bi-box-arrow-in-right"></i> Entrar</button>
+      </form>
+      
+
+      
+      <div class="demo-hint">
+        <b>Acesso de demonstração</b><br>
+        Administrador: admin@mobiline.com / admin123<br>
+        Funcionário: equipe@mobiline.com / equipe123<br>
+
+        by: Luigi
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<script src="js/utils.js"></script>
+<script src="js/data.js"></script>
+<script src="js/layout.js"></script>
+<script src="js/login.js"></script>
+</body>
+</html>

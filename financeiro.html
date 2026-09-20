@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Financeiro · MobiLine</title>
+<link rel="icon" href="assets/logo-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/vendor/bootstrap-icons/bootstrap-icons.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="financeiro">
+
+<div class="app-shell">
+  <aside class="sidebar" id="sidebarMount"></aside>
+  <div class="main-area">
+    <header class="topbar" id="topbarMount"></header>
+
+    <main class="content">
+      <div class="content-header">
+        <div>
+          <h1>Financeiro</h1>
+          <p>Visão consolidada da saúde financeira da movelaria.</p>
+        </div>
+      </div>
+
+      <div class="toolbar">
+        <button class="btn btn-outline btn-sm" data-range="hoje">Hoje</button>
+        <button class="btn btn-outline btn-sm" data-range="semana">Esta semana</button>
+        <button class="btn btn-primary btn-sm" data-range="mes">Este mês</button>
+        <button class="btn btn-outline btn-sm" data-range="ano">Este ano</button>
+        <div style="display:flex; align-items:center; gap:8px; margin-left:6px;">
+          <input type="date" id="rangeInicio" class="filter-select" style="padding:8px 10px;">
+          <span class="cell-muted">até</span>
+          <input type="date" id="rangeFim" class="filter-select" style="padding:8px 10px;">
+          <button class="btn btn-outline btn-sm" id="btnRangePersonalizado">Aplicar período</button>
+        </div>
+      </div>
+
+      <div class="metrics-grid" id="metricsGrid"></div>
+
+      <div class="dashboard-grid">
+        <div class="chart-card">
+          <div class="card-header" style="padding:0 0 16px; border:none;">
+            <h3>Receitas x Despesas</h3>
+          </div>
+          <div class="chart-canvas-wrap" style="height:270px;">
+            <canvas id="chartFinanceiro"></canvas>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <h3>Despesas recentes</h3>
+          </div>
+          <div class="table-wrap">
+            <table class="mobi-table">
+              <thead><tr><th>Descrição</th><th>Categoria</th><th>Valor</th><th>Data</th></tr></thead>
+              <tbody id="despesasBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="assets/vendor/chart.umd.min.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/data.js"></script>
+<script src="js/layout.js"></script>
+<script src="js/financeiro.js"></script>
+</body>
+</html>

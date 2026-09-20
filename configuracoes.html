@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Configurações · MobiLine</title>
+<link rel="icon" href="assets/logo-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/vendor/bootstrap-icons/bootstrap-icons.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="configuracoes">
+
+<div class="app-shell">
+  <aside class="sidebar" id="sidebarMount"></aside>
+  <div class="main-area">
+    <header class="topbar" id="topbarMount"></header>
+
+    <main class="content">
+      <div class="content-header">
+        <div>
+          <h1>Configurações</h1>
+          <p>Gerencie seu perfil, permissões e preferências do sistema.</p>
+        </div>
+      </div>
+
+      <div class="two-col-grid" style="align-items:start;">
+        <div class="card card-pad">
+          <h3 style="margin-bottom:16px;">Meu perfil</h3>
+          <form id="formPerfil">
+            <div class="form-grid">
+              <div class="form-field full"><label>Nome</label><input type="text" id="fNome" required></div>
+              <div class="form-field full"><label>E-mail</label><input type="email" id="fEmail" required></div>
+              <div class="form-field full"><label>Nível de acesso</label><input type="text" id="fPapel" disabled></div>
+            </div>
+            <div style="margin-top:16px;"><button type="submit" class="btn btn-primary"><i class="bi bi-check-lg"></i> Salvar alterações</button></div>
+          </form>
+        </div>
+
+        <div class="card card-pad">
+          <h3 style="margin-bottom:14px;">Permissões por nível de acesso</h3>
+          <div style="margin-bottom:14px;">
+            <div class="badge-pill badge-info" style="margin-bottom:8px;">Administrador</div>
+            <p class="cell-muted" style="margin:0;">Acesso completo: cadastra, edita e exclui em todos os módulos, acessa o financeiro, relatórios e configurações, e gerencia funcionários.</p>
+          </div>
+          <div>
+            <div class="badge-pill badge-purple" style="margin-bottom:8px;">Funcionário</div>
+            <p class="cell-muted" style="margin:0;">Visualiza clientes e projetos, atualiza o andamento dos projetos, acessa a agenda e visualiza pagamentos — sem acesso ao financeiro, relatórios ou configurações do sistema.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card card-pad" id="cardFuncionarios" style="margin-top:18px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+          <h3 style="margin:0;">Funcionários com acesso</h3>
+          <button class="btn btn-outline btn-sm" id="btnNovoFuncionario"><i class="bi bi-plus-lg"></i> Adicionar usuário</button>
+        </div>
+        <div class="table-wrap">
+          <table class="mobi-table">
+            <thead><tr><th>Nome</th><th>E-mail</th><th>Nível de acesso</th><th></th></tr></thead>
+            <tbody id="funcionariosBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card card-pad" style="margin-top:18px;">
+        <h3 style="margin-bottom:10px;">Sobre o sistema</h3>
+        <p class="cell-muted">MobiLine — sistema de gestão para movelarias. Versão de demonstração 1.0.</p>
+        <p class="cell-muted">Todos os dados deste sistema são fictícios e armazenados apenas no seu navegador (localStorage).</p>
+        <button class="btn btn-danger btn-sm" id="btnResetDemo" style="margin-top:8px;"><i class="bi bi-arrow-counterclockwise"></i> Restaurar dados de demonstração</button>
+      </div>
+    </main>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modalFuncionario">
+  <div class="modal-box">
+    <div class="modal-header"><h3>Novo usuário</h3><button class="modal-close" data-close><i class="bi bi-x-lg"></i></button></div>
+    <form id="formFuncionario">
+      <div class="modal-body">
+        <div class="form-grid">
+          <div class="form-field full"><label>Nome *</label><input type="text" id="nfNome" required></div>
+          <div class="form-field full"><label>E-mail *</label><input type="email" id="nfEmail" required></div>
+          <div class="form-field full"><label>Senha *</label><input type="text" id="nfSenha" required></div>
+          <div class="form-field full"><label>Nível de acesso</label><select id="nfPapel"><option>Funcionário</option><option>Administrador</option></select></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline" data-close>Cancelar</button>
+        <button type="submit" class="btn btn-primary"><i class="bi bi-check-lg"></i> Adicionar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="js/utils.js"></script>
+<script src="js/data.js"></script>
+<script src="js/layout.js"></script>
+<script src="js/configuracoes.js"></script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fornecedores · MobiLine</title>
+<link rel="icon" href="assets/logo-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/vendor/bootstrap-icons/bootstrap-icons.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="fornecedores">
+
+<div class="app-shell">
+  <aside class="sidebar" id="sidebarMount"></aside>
+  <div class="main-area">
+    <header class="topbar" id="topbarMount"></header>
+
+    <main class="content">
+      <div class="content-header">
+        <div>
+          <h1>Fornecedores</h1>
+          <p>Cadastro de parceiros e fornecedores de materiais.</p>
+        </div>
+        <button class="btn btn-primary" id="btnNovoFornecedor"><i class="bi bi-plus-lg"></i> Novo fornecedor</button>
+      </div>
+
+      <div class="card">
+        <div class="card-pad" style="padding-bottom:0;">
+          <div class="toolbar">
+            <div class="search-box"><i class="bi bi-search"></i><input type="text" id="searchInput" placeholder="Pesquisar por nome ou empresa..."></div>
+            <span class="cell-muted" id="countLabel" style="margin-left:auto;"></span>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table class="mobi-table">
+            <thead><tr><th>Fornecedor</th><th>Telefone</th><th>E-mail</th><th>Produtos fornecidos</th><th></th></tr></thead>
+            <tbody id="fornecedoresBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modalFornecedor">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3 id="modalFornecedorTitle">Novo fornecedor</h3>
+      <button class="modal-close" data-close><i class="bi bi-x-lg"></i></button>
+    </div>
+    <form id="formFornecedor">
+      <div class="modal-body">
+        <div class="form-grid">
+          <div class="form-field"><label>Nome do contato *</label><input type="text" id="fNome" required></div>
+          <div class="form-field"><label>Empresa *</label><input type="text" id="fEmpresa" required></div>
+          <div class="form-field"><label>Telefone</label><input type="text" id="fTelefone"></div>
+          <div class="form-field"><label>E-mail</label><input type="email" id="fEmail"></div>
+          <div class="form-field full"><label>Endereço</label><input type="text" id="fEndereco"></div>
+          <div class="form-field"><label>CNPJ</label><input type="text" id="fCnpj"></div>
+          <div class="form-field full"><label>Produtos fornecidos</label><input type="text" id="fProdutos" placeholder="Ex: Chapas de MDF, ferragens..."></div>
+          <div class="form-field full"><label>Observações</label><textarea id="fObservacoes"></textarea></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline" data-close>Cancelar</button>
+        <button type="submit" class="btn btn-primary"><i class="bi bi-check-lg"></i> Salvar fornecedor</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="js/utils.js"></script>
+<script src="js/data.js"></script>
+<script src="js/layout.js"></script>
+<script src="js/fornecedores.js"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estoque · MobiLine</title>
+<link rel="icon" href="assets/logo-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/vendor/bootstrap-icons/bootstrap-icons.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="estoque">
+
+<div class="app-shell">
+  <aside class="sidebar" id="sidebarMount"></aside>
+  <div class="main-area">
+    <header class="topbar" id="topbarMount"></header>
+
+    <main class="content">
+      <div class="content-header">
+        <div>
+          <h1>Estoque</h1>
+          <p>Controle simples de materiais, ferragens e insumos.</p>
+        </div>
+        <button class="btn btn-primary" id="btnNovoProduto"><i class="bi bi-plus-lg"></i> Novo produto</button>
+      </div>
+
+      <div id="alertHolder"></div>
+
+      <div class="card">
+        <div class="card-pad" style="padding-bottom:0;">
+          <div class="toolbar">
+            <div class="search-box"><i class="bi bi-search"></i><input type="text" id="searchInput" placeholder="Pesquisar produto..."></div>
+            <select class="filter-select" id="statusFilter">
+              <option value="">Todos os status</option>
+              <option>Disponível</option><option>Estoque baixo</option><option>Sem estoque</option>
+            </select>
+            <span class="cell-muted" id="countLabel" style="margin-left:auto;"></span>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table class="mobi-table">
+            <thead><tr><th>Produto</th><th>Categoria</th><th>Quantidade</th><th>Estoque mínimo</th><th>Fornecedor</th><th>Status</th><th></th></tr></thead>
+            <tbody id="estoqueBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modalProduto">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3 id="modalProdutoTitle">Novo produto</h3>
+      <button class="modal-close" data-close><i class="bi bi-x-lg"></i></button>
+    </div>
+    <form id="formProduto">
+      <div class="modal-body">
+        <div class="form-grid">
+          <div class="form-field full"><label>Produto *</label><input type="text" id="fNome" required></div>
+          <div class="form-field"><label>Categoria</label><input type="text" id="fCategoria" placeholder="Ex: Ferragem"></div>
+          <div class="form-field"><label>Fornecedor</label><select id="fFornecedor"><option value="">— Nenhum —</option></select></div>
+          <div class="form-field"><label>Quantidade *</label><input type="number" min="0" id="fQuantidade" required></div>
+          <div class="form-field"><label>Unidade</label><input type="text" id="fUnidade" placeholder="un, kg, rolo..."></div>
+          <div class="form-field"><label>Estoque mínimo</label><input type="number" min="0" id="fEstoqueMinimo" value="0"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline" data-close>Cancelar</button>
+        <button type="submit" class="btn btn-primary"><i class="bi bi-check-lg"></i> Salvar produto</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="js/utils.js"></script>
+<script src="js/data.js"></script>
+<script src="js/layout.js"></script>
+<script src="js/estoque.js"></script>
+</body>
+</html>

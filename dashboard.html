@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel · MobiLine</title>
+<link rel="icon" href="assets/logo-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/vendor/bootstrap-icons/bootstrap-icons.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="dashboard">
+
+<div class="app-shell">
+  <aside class="sidebar" id="sidebarMount"></aside>
+
+  <div class="main-area">
+    <header class="topbar" id="topbarMount"></header>
+
+    <main class="content">
+      <div class="content-header">
+        <div>
+          <h1>Painel <span style="color:var(--text-muted); font-weight:500;">| MobiLine</span></h1>
+          <p>Visão geral da sua movelaria hoje.</p>
+        </div>
+        <button class="btn btn-primary" onclick="window.location.href='projetos.html'"><i class="bi bi-plus-lg"></i> Novo projeto</button>
+      </div>
+
+      <div class="metrics-grid" id="metricsGrid"></div>
+
+      <div class="dashboard-grid">
+        <div class="chart-card">
+          <div class="card-header" style="padding:0 0 16px; border:none;">
+            <h3>Receitas x Despesas</h3>
+            <div class="filter-select" style="font-size:12px;">Últimos 6 meses</div>
+          </div>
+          <div class="chart-canvas-wrap" style="height:260px;">
+            <canvas id="chartFinanceiro"></canvas>
+          </div>
+        </div>
+
+        <div class="chart-card">
+          <div class="card-header" style="padding:0 0 16px; border:none;">
+            <h3>Distribuição de projetos</h3>
+          </div>
+          <div class="chart-canvas-wrap" style="height:170px;">
+            <canvas id="chartProjetos"></canvas>
+          </div>
+          <div class="chart-legend-list" id="legendProjetos"></div>
+        </div>
+      </div>
+
+      <div class="dashboard-grid">
+        <div class="card">
+          <div class="card-header">
+            <h3>Projetos em andamento</h3>
+            <a class="muted-link" href="projetos.html">Ver todos <i class="bi bi-arrow-right"></i></a>
+          </div>
+          <div class="table-wrap">
+            <table class="mobi-table" id="tableProjetos">
+              <thead>
+                <tr><th>Projeto</th><th>Cliente</th><th>Status</th><th>Entrega</th><th>Valor</th><th></th></tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="chart-card">
+          <div class="card-header" style="padding:0 0 16px; border:none;">
+            <h3>Situação dos pagamentos</h3>
+          </div>
+          <div class="chart-canvas-wrap" style="height:170px;">
+            <canvas id="chartPagamentos"></canvas>
+          </div>
+          <div class="chart-legend-list" id="legendPagamentos"></div>
+        </div>
+      </div>
+
+      <div class="dashboard-grid">
+        <div class="card">
+          <div class="card-header">
+            <h3>Próximos agendamentos</h3>
+            <a class="muted-link" href="agenda.html">Ver agenda <i class="bi bi-arrow-right"></i></a>
+          </div>
+          <div id="listAgendamentos"></div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <h3>Últimos clientes cadastrados</h3>
+            <a class="muted-link" href="clientes.html">Ver todos <i class="bi bi-arrow-right"></i></a>
+          </div>
+          <div id="listClientes"></div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="assets/vendor/chart.umd.min.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/data.js"></script>
+<script src="js/layout.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>
